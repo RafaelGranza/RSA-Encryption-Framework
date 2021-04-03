@@ -2,7 +2,7 @@
 C++ RSA Generator and Breaker 
 
 #### To Compile:
-```c++
+```console
 $ make
 ```
 
@@ -13,13 +13,13 @@ $ make
 * The **decrypted** file is in "*messages/decoded.txt*".
 
 ##### To run the test:
-```c++
+```console
 $ ./main
 ```
 
 ## Key Breaker Tests
 
 ##### To run the test:
-```c++
+```console
 $ ./break
 ```
