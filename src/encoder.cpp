@@ -2,7 +2,7 @@
 
 namespace RSA
 {
-    boost::multiprecision::uint1024_t encoder::text_to_int(const std::string& message) 
+    boost::multiprecision::uint1024_t encoder::text_to_int(const std::wstring& message) 
     {
         boost::multiprecision::uint1024_t value;
         unsigned exp = 0;
@@ -14,9 +14,9 @@ namespace RSA
         return value;
     }
 
-    std::string encoder::int_to_text(boost::multiprecision::uint1024_t value) 
+    std::wstring encoder::int_to_text(boost::multiprecision::uint1024_t value) 
     {
-        std::string message;
+        std::wstring message;
         while(value)
         {
             message += (char) (value & 255);
@@ -25,9 +25,9 @@ namespace RSA
         return message;
     }
 
-    std::string encoder::hash(boost::multiprecision::uint1024_t value) 
+    std::wstring encoder::hash(boost::multiprecision::uint1024_t value) 
     {
-        std::string message;
+        std::wstring message;
         while(value)
         {
             message +=  ('0' + (char)(value & 31));
@@ -37,7 +37,7 @@ namespace RSA
         return message;
     }
 
-    boost::multiprecision::uint1024_t encoder::unhash(const std::string& message) 
+    boost::multiprecision::uint1024_t encoder::unhash(const std::wstring& message) 
     {
         boost::multiprecision::uint1024_t value;
         unsigned exp = 0;
@@ -56,12 +56,12 @@ namespace RSA
                 boost::multiprecision::uint1024_t& public_key_1,
                 boost::multiprecision::uint1024_t& public_key_2) 
     {
-        std::ifstream is (path_in);
+        std::wifstream is (path_in);
         if (!is.is_open())
         {
             throw std::runtime_error("Arquivo de entrada inexistente\n");
         }
-        std::ofstream os (path_out);
+        std::wofstream os (path_out);
         if (!os.is_open())
         {
             throw std::runtime_error("Arquivo de saída inexistente\n");
@@ -72,7 +72,7 @@ namespace RSA
         unsigned last;
         boost::multiprecision::uint1024_t message;
         
-        char* buffer = new char [block_size];
+        wchar_t* buffer = new wchar_t [block_size];
         //O(F)
         while((last = is.readsome (buffer,block_size)) == block_size)
         {
@@ -83,8 +83,8 @@ namespace RSA
         }
         if(last)
         {
-            char* buffer_rest = new char [last];
-            std::strncpy(buffer_rest, buffer, last);
+            wchar_t* buffer_rest = new wchar_t [last];
+            std::wcsncpy(buffer_rest, buffer, last);
             message = encoder::text_to_int(buffer_rest);
             message = mod_exp(message, k2, k1);
             os << hash(message) << std::endl;
@@ -96,8 +96,8 @@ namespace RSA
     void encoder::encode(
                 std::string& path_in,
                 std::string& path_out,
-                std::string& public_key_1,
-                std::string& public_key_2)
+                std::wstring& public_key_1,
+                std::wstring& public_key_2)
     {
         boost::multiprecision::uint1024_t k1 = encoder::unhash(public_key_1);
         boost::multiprecision::uint1024_t k2 = encoder::unhash(public_key_2);
@@ -110,12 +110,12 @@ namespace RSA
                 boost::multiprecision::uint1024_t& public_key,
                 boost::multiprecision::uint1024_t& private_key)
     {
-        std::ifstream is (path_in);
+        std::wifstream is (path_in);
         if (!is.is_open())
         {
             throw std::runtime_error("Arquivo de entrada inexistente\n");
         }
-        std::ofstream os (path_out);
+        std::wofstream os (path_out);
         if (!os.is_open())
         {
             throw std::runtime_error("Arquivo de saída inexistente\n");
@@ -123,7 +123,7 @@ namespace RSA
 
         boost::multiprecision::uint1024_t k1 = public_key;
         boost::multiprecision::uint1024_t k2 = private_key;
-        std::string v;
+        std::wstring v;
         boost::multiprecision::uint1024_t message;
 
         while(is >> v)
@@ -137,8 +137,8 @@ namespace RSA
     void encoder::decode(
                 std::string& path_in,
                 std::string& path_out,
-                std::string& public_key,
-                std::string& private_key) 
+                std::wstring& public_key,
+                std::wstring& private_key) 
     {
         boost::multiprecision::uint1024_t k1 = encoder::unhash(public_key);
         boost::multiprecision::uint1024_t k2 = encoder::unhash(private_key);
