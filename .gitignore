@@ -1,0 +1,5 @@
+# Ignore Compiled Files
+.compiled
+
+#Ignore External Compiled Files
+*.o
