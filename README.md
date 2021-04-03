@@ -1,5 +1,6 @@
 # RSA
-C++ RSA Generator and Breaker 
+C++ RSA Generator and Breaker
+##### **Does not accept keys bigger than 1024 bits* 
 
 #### To Compile:
 ```console
