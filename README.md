@@ -8,9 +8,9 @@ $ make
 
 ## Encryption Tests
 
-* The text to encrypt is in "$messages/text.txt$".
-* The $$encrypted$$ file is in "$messages/encoded.txt$".
-* The $$decrypted$$ file is in "$messages/decoded.txt$".
+* The text to encrypt is in "*messages/text.txt*".
+* The **encrypted** file is in "*messages/encoded.txt*".
+* The **decrypted** file is in "*messages/decoded.txt*".
 
 ##### To run the test:
 ```c++
