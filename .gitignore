@@ -1,5 +1,6 @@
 # Ignore Compiled Files
 .compiled
 
-#Ignore External Compiled Files
-*.o
+#Ignore Compiled Test Files
+break
+main
