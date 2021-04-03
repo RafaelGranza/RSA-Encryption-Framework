@@ -78,7 +78,7 @@ namespace RSA
     template<class T>
     T lcm(T a, T b) 
     {
-        return (a*b) / gcd(a, b);    
+        return (a*b) / RSA::gcd(a, b);    
     }
     
 

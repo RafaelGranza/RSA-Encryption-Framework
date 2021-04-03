@@ -21,6 +21,6 @@ int main(int argc, char const *argv[])
     
     manager.encode(file, file1, k1, k2);
     manager.decode(file1, file2, k1, k3);
-
+    
     return 0;
 }
