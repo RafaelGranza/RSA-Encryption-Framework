@@ -24,3 +24,6 @@ $ ./main
 ```console
 $ ./break
 ```
+
+### Factorization Speed
+![Time](https://i.imgur.com/0oqPxJ0.png)
