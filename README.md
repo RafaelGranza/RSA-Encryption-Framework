@@ -2,6 +2,10 @@
 C++ RSA Generator and Breaker
 ##### **Does not accept keys bigger than 1024 bits* 
 
+## Prerequisites:
+* g++
+* boost lib
+
 #### To Compile:
 ```console
 $ make
