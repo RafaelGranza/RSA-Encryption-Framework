@@ -1,5 +1,7 @@
 # RSA
-C++ RSA Generator and Breaker
+Implements an RSA Key Generator 😇
+Implements an RSA Key Breaker 😈
+
 ##### **Does not accept keys bigger than 1024 bits* 
 
 ## Prerequisites:
