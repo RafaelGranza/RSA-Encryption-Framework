@@ -1,6 +1,6 @@
 # RSA
-Implements an RSA Key Generator 😇
-Implements an RSA Key Breaker 😈
+RSA Key Generator 😇   
+RSA Key **Breaker** 😈
 
 ##### **Does not accept keys bigger than 1024 bits* 
 
